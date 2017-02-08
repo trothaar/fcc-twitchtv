@@ -1,6 +1,7 @@
 //Run my jquery
 $(document).ready(function() {
   //FCC stream info and status API call
+  //Use client ID method as explained in Coding 360 video
   $.ajax({
     type: "GET",
     url: "https://api.twitch.tv/kraken/streams/freecodecamp",
@@ -18,6 +19,51 @@ $(document).ready(function() {
     }
     }
   });
+
+//Get followers without hard-coding an array as explained in Coding 360 video
+$.ajax({
+  type: "GET",
+  url: "https://api.twitch.tv/kraken/users/freecodecamp/follows/channels/",
+  headers:{
+    'Client-ID': '4hbpaesmju932l4hqytsewsyw1s2kg'
+},
+success: function(data2){
+for (var i = 0; i < data2.follows.length; i++) {
+  //Get displayName
+  var displayName = data2.follows[i].channel.display_name;
+  var logo = data2.follows[i].channel.logo;
+  var status= data2.follows[i].channel.status;
+  if(logo==null){
+  logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeF9yiuuOJBNO8VpXsVp2VQIpBSTPdLKW6uB3AI-jmSX9G74bX1g";
+}
+$("#followerInfo").prepend("<div class ='row'>" + "<div class='col-md-4'>" +
+          "<a href='http://www.twitch.tv/"+ displayName+"'><img src='" + logo + "'></a>"
+          +
+          "</div>" + "<div class='col-md-4'>" + displayName + "</div>" + "<div class='col-md-4'>" + status + "</div></div>");
+}
+}
+});
+// Test followers that FCC gives us to ensure that code is working
+var deletedFollowers=['brunofin', 'comster404'];
+for(var i=0;i<deletedFollowers.length;i++){
+ $.ajax({
+   type: "GET",
+   url: "https://api.twitch.tv/kraken/streams/"+deletedFollowers[i],
+   headers:{
+  'Client-ID': '4hbpaesmju932l4hqytsewsyw1s2kg'
+},
+ error: function(data3){
+   var logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeF9yiuuOJBNO8VpXsVp2VQIpBSTPdLKW6uB3AI-jmSX9G74bX1g";
+   var displayName= data3.statusText;
+   var status= data3.status;
+     $("#followerInfo").prepend("<div class ='row'>" + "<div class='col-md-4'>" +
+          "<a  href='https://www.twitch.tv/" +displayName+  +"'><img src='" + logo + "'></a>"
+          +
+          "</div>" + "<div class='col-md-4'>" + displayName + "</div>" + "<div class='col-md-4'>" + status + "</div></div>");
+ }
+});
+
+}
 
 
 });

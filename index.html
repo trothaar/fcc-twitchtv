@@ -12,6 +12,8 @@
         about what they are streaming.
     4. Users will see a placeholder notification if a streamer
        has closed their Twitch account (or the account never existed).
+
+Much thanks to Coding 360 and Dylan Israel; without his videos, I'd still be lost!
 -->
 
 <!DOCTYPE html>
@@ -31,6 +33,9 @@
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/16f8eaceda.js"></script>
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
@@ -43,24 +48,24 @@
   <div id="header" class="text-center">
     <h1>TwitchTV JSON API</h1>
     <h2>Free Code Camp</h2>
-    <H3 id="fccstatus"></h3>
+  <a href = "https://www.twitch.tv/freecodecamp" target = "blank"> <H3 id="fccStatus"></h3></a>
   </div>
 
 <div class = "row">
 <h1>
 <div class = "col-md-4">
-  LOGO
+  Logo
 </div>
 <div class = "col-md-4">
-  DISPLAY NAME
+  Display Name
 </div>
 <div class = "col-md-4">
-  STATUS
+  Status
 </div>
 </h1>
 </div>
 
-<div id="follower-info">
+<div id="followerInfo">
 </div>
 
 
