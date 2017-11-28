@@ -47,10 +47,55 @@ if(displayName==undefined){
   status = "User Does Not Exist";
   logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeF9yiuuOJBNO8VpXsVp2VQIpBSTPdLKW6uB3AI-jmSX9G74bX1g";
 }
+
+		// Create Row DOM
+		var followerInfoRow = document.createElement('div');
+			followerInfoRow.classList.add('row');
+
+		// Create Grid 4a DOM
+		var followerInfoGrid4a = document.createElement('div');
+			followerInfoGrid4a.classList.add('col-md-4');
+			
+		// Create Image for Link DOM
+		var followerInfoImage = document.createElement('img');
+		    followerInfoImage.src = logo;
+
+        // Place Image Inside Anchor DOM
+		followerInfoGrid4a.appendChild(followerInfoImage);
+
+		// Create Anchor Link DOM
+		var followerInfoAnchor = document.createElement('a');
+            followerInfoAnchor.href = 'http://www.twitch.tv/' + displayName;
+
+		// Create Grid 4b DOM
+		var followerInfoGrid4b = document.createElement('div');
+			followerInfoGrid4b.classList.add('col-md-4');
+
+        // Place displayName inside Grid 4b DOM
+		followerInfoGrid4b.appendChild(displayName);
+			
+		// Create Grid 4c DOM
+		var followerInfoGrid4c = document.createElement('div');
+			followerInfoGrid4c.classList.add('col-md-4');
+
+        // Place status inside Grid 4c DOM
+		followerInfoGrid4c.appendChild(status);
+		
+		// Place grid DOM's inside row DOM
+		followerInfoRow.appendChild(followerInfoGrid4a);
+		followerInfoRow.appendChild(followerInfoGrid4b);
+		followerInfoRow.appendChild(followerInfoGrid4c);
+
+        // Place followerInfoRow DOM into followerInfo
+        $("#followerInfo").prepend(followerInfoRow);
+
+/*
 $("#followerInfo").prepend("<div class ='row'>" + "<div class='col-md-4'>" +
           "<a href='http://www.twitch.tv/"+ displayName+"'><img src='" + logo + "'></a>"
           +
           "</div>" + "<div class='col-md-4'>" + displayName + "</div>" + "<div class='col-md-4'>" + status + "</div></div>");
+*/
+
 }
 }
 });
